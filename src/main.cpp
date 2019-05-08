@@ -245,7 +245,7 @@ void loop()
 							digitalWrite(Rel5, HIGH);
 							digitalWrite(Rel6, HIGH);
 							digitalWrite(Rel7, HIGH);
-							client.println(dataToClient());;
+							client.println(dataToClient());
 							client.stop();
 						}
 						else if (url.indexOf("KOnSp1.txt") >= 0)
@@ -253,7 +253,7 @@ void loop()
 							digitalWrite(Rel5, LOW);
 							digitalWrite(Rel6, HIGH);
 							digitalWrite(Rel7, HIGH);
-							client.println(dataToClient());;
+							client.println(dataToClient());
 							client.stop();
 						}
 						else if (url.indexOf("KOnSp2.txt") >= 0)
@@ -269,8 +269,12 @@ void loop()
 							digitalWrite(Rel5, HIGH);
 							digitalWrite(Rel6, HIGH);
 							digitalWrite(Rel7, LOW);
-							client.println(dataToClient());;
+							client.println(dataToClient());
 							client.stop();
+						}
+						else if (url.indexOf("CekStatusPin.txt") >= 0)
+						{							
+							client.println(dataToClient());
 						}
 					}
 					else
