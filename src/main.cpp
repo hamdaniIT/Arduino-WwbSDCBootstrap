@@ -52,24 +52,35 @@ int cek(String in, String cari)
 }
 
 float cekArus(int pinSen)
-{
-	float a = (5.0 / 1023.0) * analogRead(pinSen);
-	float b = ((abs(a - 2.50)) / 2.50) * 30;
-	return b;
+{	
+	float b=0.0;
+	float c=0.0;
+
+	for (int i = 0; i <30; i++)
+	{
+		float a = (5.0 / 1023.0) * analogRead(pinSen);
+		b = ((abs(a - 2.50)) / 2.50) * 30;
+		if (b>c)
+		{
+			c=b;
+		}
+		
+		delay(10);
+	}
+	return c;
 }
 String dataToClient(){
 	String txt="";
 	txt="Lampu1="+(String)cekArus(pinS1)+";";
 	txt=txt+"Lampu2="+(String)cekArus(pinS2)+";";
 	txt=txt+"Lampu3="+(String)cekArus(pinS3)+";";
-	txt=txt+"Lampu4="+(String)cekArus(pinS4)+";";
-	txt=txt+"Spead1="+(String)cekArus(pinS5)+";";
-	txt=txt+"Spead2="+(String)cekArus(pinS6)+";";
-	txt=txt+"Spead3="+(String)cekArus(pinS7)+";";
-	txt=txt+"Swim="+(String)cekArus(pinS8)+";";
+	txt=txt+"Spead1="+(String)cekArus(pinS4)+";";
+	txt=txt+"Spead2="+(String)cekArus(pinS5)+";";
+	// txt=txt+"Spead2="+(String)cekArus(pinS6)+";";
+	// txt=txt+"Spead3="+(String)cekArus(pinS7)+";";
+	// txt=txt+"Swim="+(String)cekArus(pinS8)+";";
 	return txt;
 }
-
 boolean cekPassword(String pasClient, String userSimpan)
 {
 	boolean cekPas = false;
